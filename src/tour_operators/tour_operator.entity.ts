@@ -20,8 +20,7 @@ import { Permit } from "src/permits/permit.entity";
     @Column({ type: "decimal", nullable: false })
     rating: number;
 
-  
-    @OneToMany(() => Permit, (permit) => permit.operator_id)
-    permit_id: Permit[];
+    @OneToMany(() => Permit, (permit) => permit.operator)
+    permit: Permit[];
   }
   

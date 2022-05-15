@@ -36,10 +36,13 @@ export class Permit {
   @Column({ type: "date", nullable: false })
   end_date: Date;
 
-  @OneToMany(() => ClientsPermit, (client_permit) => client_permit.permit_id)
+  @OneToMany(() => ClientsPermit, (client_permit) => client_permit.permit)
   client_permit: ClientsPermit[];
 
-  @ManyToOne(() => TourOperator, (operator_id) => operator_id.permit_id)
+  @ManyToOne(() => TourOperator, (operator_id) => operator_id.permit)
   @JoinColumn({ name: "operator_id" })
-  operator_id: ClientsPermit;
+  operator: ClientsPermit;
+
+  @Column()
+  operator_id: number;
 }

@@ -28,7 +28,7 @@ import { ClientsPermit } from "../clients-permit/clients_permit.entity";
     @Column({ type: "date", nullable: false })
     birthday: Date;
 
-    @OneToMany(() => ClientsPermit, (client_permit) => client_permit.clients_id)
+    @OneToMany(() => ClientsPermit, (client_permit) => client_permit.clients)
     client_permit: ClientsPermit[];
 
   }

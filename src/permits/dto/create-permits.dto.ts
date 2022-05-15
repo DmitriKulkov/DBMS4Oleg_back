@@ -5,4 +5,5 @@ export class CreatePermitDto{
     price: number;
     start_date: Date;
     end_date: Date;
+    operator_id: number;
 }

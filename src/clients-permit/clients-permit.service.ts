@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ClientsPermit } from './clients_permit.entity';
+import {CreateClientPermitDto} from "./dto/create-client-permit.dto";
 
 @Injectable()
 export class ClientsPermitService {
@@ -16,11 +17,11 @@ export class ClientsPermitService {
         return await this.cliperRepository.delete(id);
     }
 
-    // async update(id:number, dto: CreateClientsDto){
-    //     return await this.cliperRepository.update(id, {...dto});
-    // }
+    async update(id:number, dto: CreateClientPermitDto){
+        return await this.cliperRepository.update(id, {...dto});
+    }
 
-    // async create(dto: CreateClientsDto){
-    //     return await this.cliperRepository.save({...dto});
-    // }
+    async create(dto: CreateClientPermitDto){
+        return await this.cliperRepository.save({...dto});
+    }
 }

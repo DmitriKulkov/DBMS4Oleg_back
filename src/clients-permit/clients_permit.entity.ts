@@ -2,8 +2,8 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     ManyToOne,
-    JoinColumn,
-  } from "typeorm";
+    JoinColumn, Column,
+} from "typeorm";
 import { Permit } from "src/permits/permit.entity";
 import { Clients } from "../clients/clients.entity";
   
@@ -12,12 +12,18 @@ import { Clients } from "../clients/clients.entity";
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Permit, (permit_id) => permit_id.client_permit)
+    @ManyToOne(() => Permit, (permit) => permit.client_permit)
     @JoinColumn({ name: "permit_id" })
-    permit_id: Permit;
+    permit: Permit;
+
+    @Column()
+    permit_id: number;
 
     @ManyToOne(() => Clients, (clients_id) => clients_id.client_permit)
     @JoinColumn({ name: "clients_id" })
-    clients_id: Clients;
+    clients: Clients;
+
+    @Column()
+    clients_id: number;
   }
   

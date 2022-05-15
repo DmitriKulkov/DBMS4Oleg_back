@@ -1,27 +1,28 @@
-import { Controller, Delete, Get, Param } from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
 import { ClientsPermitService } from './clients-permit.service';
+import {CreateClientPermitDto} from "./dto/create-client-permit.dto";
 
-@Controller('clients-paculty')
+@Controller('clients-permit')
 export class ClientsPermitController {
-    constructor(private clifacService: ClientsPermitService){}
+    constructor(private cliperService: ClientsPermitService){}
 
     @Get()
     getAll(){
-        return this.clifacService.getAll();
+        return this.cliperService.getAll();
     }
 
     @Delete("/:id")
     delete(@Param("id") id:number){
-        return this.clifacService.delete(id);
+        return this.cliperService.delete(id);
     }
 
-    // @Post()
-    // create(@Body() dto: CreateStudentDto){
-    //     return this.studfacService.create(dto);
-    // }
+    @Post()
+    create(@Body() dto: CreateClientPermitDto){
+        return this.cliperService.create(dto);
+    }
 
-    // @Put("/:id")
-    // update(@Param("id") id: number,  @Body() dto: CreateStudentDto){
-    //     return this.studfacService.update(id, dto);
-    // }
+    @Put("/:id")
+    update(@Param("id") id: number,  @Body() dto: CreateClientPermitDto){
+        return this.cliperService.update(id, dto);
+    }
 }
